@@ -1,0 +1,406 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  width: 100vw;
+  height: 100vh;
+}
+nav {
+  height: 67px;
+  width: 100vw;
+  position: sticky;
+}
+.navdiv {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background: #020166;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  height: 54px;
+  margin-left: 10%;
+}
+.links {
+  display: flex;
+}
+.home-button {
+  width: 92px;
+  height: 67px;
+  background: #94d97e;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  padding: 24px;
+  color: #000000;
+  text-decoration: none;
+  /* margin-left: 70%; */
+  
+}
+.favorites-webpage {
+  width: 114px;
+  height: 67px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #f7f7f9;
+  padding: 24px;
+  text-decoration: none;
+  display: flex;
+  justify-self: flex-end;
+}
+.empty-box {
+  max-width: 106px;
+  padding: 33.5px;
+}
+.menu-button {
+  display: none;
+}
+.searchform {
+  margin-top: 31px;
+  /* margin-bottom: 26px; */
+}
+.search {
+  width: 100%;
+  height: 100%;
+}
+.searchbox {
+  width: 341px;
+  height: 36px;
+  background: #f7f7f9;
+  border: 1px solid rgba(2, 1, 102, 0.5);
+  border-radius: 9px;
+}
+.search-button {
+  width: 87px;
+  height: 36px;
+  background: #373299;
+  border-radius: 9px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #f7f7f9;
+}
+#pokegrid {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1070.24px;
+  /* height: 848px; */
+  gap: 27px;
+  justify-content: center;
+  align-items: center;
+}
+.square {
+  width: 240px;
+  height: 240px;
+  background: #f7f7f9;
+  border-radius: 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px;
+}
+.poke-image {
+  height: 150px;
+}
+.poke-name {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 26px;
+  color: #373299;
+}
+.remove {
+  display: flex;
+  order: -1;
+  align-self: flex-end;
+}
+.load-more {
+  width: 210px;
+  height: 36px;
+}
+#load-button {
+  height: 100%;
+  width: 100%;
+  border: 1px solid #373299;
+  border-radius: 9px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #373299;
+}
+.fave-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 1070.24px;
+  gap: 27px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  display: flex;
+  align-items: center;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 13px 22px 10px 14px;
+  border: 1px solid #888;
+  max-width: 700px;
+  min-height: 342px;
+  width: 50%;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.15));
+}
+.poke-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+.poke-index {
+  align-self: flex-start;
+  justify-self: flex-start;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 26px;
+  color: #373299;
+}
+.poke-image-modal {
+  height: 180px;
+}
+.poke-name-modal {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 38px;
+  color: #373299;
+}
+.poke-types {
+  display: flex;
+  justify-content: space-around;
+}
+.type {
+  width: 100px;
+  height: 35px;
+  border-radius: 9px;
+  text-align: center;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 26px;
+  color: #f7f7f9;
+  padding: 5px;
+  margin: 8px 4px;
+}
+.divider {
+  border: 1px solid #d7d7d7;
+  height: 246px;
+  margin: 0px 37px;
+}
+.info-div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.description-title {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 26px;
+  color: #373299;
+  margin-bottom: 9px;
+}
+.desc {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #020166;
+  max-width: 349px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.stats-title {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 26px;
+  color: #373299;
+}
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-height: 67px;
+  height: 10vh;
+}
+.stat {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #020166;
+}
+.like-button {
+  align-self: flex-start;
+}
+.Normal {
+  background: #a8a77a;
+}
+.Fire {
+  background: #ee8130;
+}
+.Water {
+  background: #6390f0;
+}
+.Electric {
+  background: #f7d02c;
+}
+.Grass {
+  background: #7ac74c;
+}
+.Ice {
+  background: #96d9d6;
+}
+.Fighting {
+  background: #c22e28;
+}
+.Poison {
+  background: #a33ea1;
+}
+.Ground {
+  background: #e2bf65;
+}
+.Flying {
+  background: #a98ff3;
+}
+.Psychic {
+  background: #f95587;
+}
+.Bug {
+  background: #a6b91a;
+}
+.Rock {
+  background: #b6a136;
+}
+.Ghost {
+  background: #735797;
+}
+.Dragon {
+  background: #6f35fc;
+}
+.Dark {
+  background: #705746;
+}
+.Steel {
+  background: #b7b7ce;
+}
+.Fairy {
+  background: #d685ad;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width:480px) {
+  #pokegrid {
+    flex-direction: column;
+    width: 100%;
+  }
+  .links {
+    display: none;
+  }
+  .navdiv {
+    justify-content: center;
+  }
+  .logo {
+    margin-left: auto;
+  }
+  .searchbox {
+    width: 200px;
+  }
+  .menu-button {
+    display: block;
+    margin-left: auto;
+  }
+  .modal-content {
+    flex-direction: column;
+    gap: 20px;
+    align-content: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .info-div {
+    gap: 20px;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .stat-content {
+    flex-wrap: nowrap;
+    align-content: center;
+  }
+  .divider {
+    margin: 0;
+    max-width: 245px;
+    width: 90%;
+    height: 0;
+  }
+  .fave-grid {
+    flex-direction: column;
+    width: 100%;
+  }
+}

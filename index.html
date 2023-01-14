@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body id="homepage">
+    <div class="container">
+      <nav>
+        <div class="navdiv">
+          <img src="/assets/image 4.png" class="logo" />
+          <div class="links">
+            <a href="/index.html" class="home-button">Home</a>
+            <a href="/favorites.html" class="favorites-webpage">Favorites</a>
+            <div class="empty-box"></div>
+          </div>
+          <img src="/assets/mobile-menu.svg" alt="" class="menu-button">
+        </div>
+      </nav>
+      <div class="searchform">
+        <form class="search" id="search-form">
+          <input type="search" class="searchbox" id="search-input"/>
+          <button type="submit" class="search-button" id="search-button">search</button>
+        </form>
+      </div>
+      <div id="pokegrid"></div>
+      <div class="load-more">
+        <button type="submit" id="load-button">Load more...</button>
+      </div>
+    </div>
+    <div id="myModal" class="modal"></div>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
