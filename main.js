@@ -111,8 +111,8 @@ function makeModal(id) {
   divider.className = "divider";
   modalDiv.className = "modal-content";
   const likeButton = document.createElement("img");
-  if (JSON.parse(localStorage.getItem(id-1))) likeButton.setAttribute("src", "/assets/liked.png");
-  else likeButton.setAttribute("src", "/assets/vector.png");
+  if (JSON.parse(localStorage.getItem(id-1))) likeButton.setAttribute("src", "./assets/liked.png");
+  else likeButton.setAttribute("src", "./assets/vector.png");
   likeButton.className = "like-button";
   likeButton.setAttribute("id", Date.now());
   pokeCard.appendChild(pokeTypes);
@@ -128,14 +128,14 @@ function addToLiked(likeId) {
   const pokemon = modal.getElementsByClassName("poke-card")[0];
   const pokeId = pokemon.getAttribute("id")-1;
   const likedList = JSON.parse(localStorage.getItem("pokemon"))||[]
-  if (like.getAttribute("src") == "/assets/liked.png") {
-    like.setAttribute("src", "/assets/Vector.png");
+  if (like.getAttribute("src") == "./assets/liked.png") {
+    like.setAttribute("src", "./assets/Vector.png");
     likedList.splice(likedList.indexOf(pokeId),1)
     localStorage.setItem(pokeId, false) 
  
   }
   else {
-    like.setAttribute("src", "/assets/liked.png");
+    like.setAttribute("src", "./assets/liked.png");
     likedList.push(pokeId);
     localStorage.setItem(pokeId, true) 
   }
@@ -161,7 +161,7 @@ function renderFave() {
   for (let i = 0; i < faveArray.length; i++) {
     const favePoke = makepokemon(faveArray[i]);
     const closeButton = document.createElement("img");
-    closeButton.src = "/assets/union.svg"
+    closeButton.src = "./assets/union.svg"
     closeButton.className = "remove"
     favePoke.appendChild(closeButton);
     faveGrid.appendChild(favePoke);
