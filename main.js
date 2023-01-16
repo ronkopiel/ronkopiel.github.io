@@ -112,7 +112,7 @@ function makeModal(id) {
   modalDiv.className = "modal-content";
   const likeButton = document.createElement("img");
   if (JSON.parse(localStorage.getItem(id-1))) likeButton.setAttribute("src", "./assets/liked.png");
-  else likeButton.setAttribute("src", "./assets/vector.png");
+  else likeButton.setAttribute("src", "./assets/unliked.png");
   likeButton.className = "like-button";
   likeButton.setAttribute("id", Date.now());
   pokeCard.appendChild(pokeTypes);
@@ -129,7 +129,7 @@ function addToLiked(likeId) {
   const pokeId = pokemon.getAttribute("id")-1;
   const likedList = JSON.parse(localStorage.getItem("pokemon"))||[]
   if (like.getAttribute("src") == "./assets/liked.png") {
-    like.setAttribute("src", "./assets/Vector.png");
+    like.setAttribute("src", "./assets/unliked.png");
     likedList.splice(likedList.indexOf(pokeId),1)
     localStorage.setItem(pokeId, false) 
  
