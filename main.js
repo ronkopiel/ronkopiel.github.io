@@ -161,7 +161,7 @@ function renderFave() {
   for (let i = 0; i < faveArray.length; i++) {
     const favePoke = makepokemon(faveArray[i]);
     const closeButton = document.createElement("img");
-    closeButton.src = "./assets/union.svg"
+    closeButton.src = "./assets/Union.svg"
     closeButton.className = "remove"
     favePoke.appendChild(closeButton);
     faveGrid.appendChild(favePoke);
