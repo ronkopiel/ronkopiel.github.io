@@ -6,18 +6,23 @@ let pokegrid ="";
 let modal ="";
 let loadButton = "";
 let counter = 0;
-let searchForm =""
+let searchForm = "";
+let searchesDiv = "";
+let searchInput = "";
 switch (page) {
   case "homepage":
+    searchesDiv = document.getElementById("searches");
     pokegrid = document.getElementById("pokegrid");
     modal = document.getElementById("myModal");
     loadButton = document.getElementById("load-button");
     makeGrid();
     loadButton.addEventListener("click", makeGrid);
     searchForm = document.getElementById("search-form");
-    searchForm.addEventListener("submit", search)
+    searchForm.addEventListener("submit", search);
+    searchInput = document.getElementById("search-input");
     break;
   case "favorites":
+    modal = document.getElementById("myModal");
     renderFave(); 
   break;
   default:
@@ -44,6 +49,11 @@ function makepokemon(pokeId) {
   return pokemon;
 }
 function makeGrid() {
+  if (pokegrid.childElementCount < 12) {
+    while (pokegrid.firstChild) {
+      pokegrid.removeChild(pokegrid.firstChild);
+    }
+  }
   for (let i = 0; i < 12; i++) {
     let pokemon = makepokemon(counter);
     pokegrid.appendChild(pokemon);
@@ -58,8 +68,15 @@ window.onclick = function (event) {
     modal.style.display = "none";
     modal.innerHTML = "";
   }
-  if (event.target.className == "square" && page == "homepage") {
+  if (event.target.id !== "searches" && page == "homepage") {
+    searchesDiv.style.display = "none";
+  }
+  if (event.target.className == "square" ) {
     makeModal(event.target.id);
+    modal.style.display = "block";
+  }
+  if (event.target.parentElement.className == "square" ) {
+    makeModal(event.target.parentElement.id);
     modal.style.display = "block";
   }
   if (event.target.className == "like-button") {
@@ -67,6 +84,19 @@ window.onclick = function (event) {
   }
   if (event.target.className == "remove") {
     removeFromLiked(event.target.parentElement);
+  }
+  if (event.target.id == "search-input") {
+    renderSearchHistory()
+  }
+  if (event.target.className == "remove-search") {
+    removeSearch(event.target.parentElement);
+  }
+  if (event.target.id == "clear") {
+    clearSearchHistory();
+  }
+  if (event.target.className == "past-search") {
+    console.log(event.target.innerText);
+    searchInput.value = event.target.innerText;
   }
 };
 
@@ -173,10 +203,15 @@ function search(){
   event.preventDefault();
   const searchForm = document.getElementById("search-input");
   const searchWord = searchForm.value.toLowerCase()
+  const searchHistory = JSON.parse(localStorage.getItem("search"))||[];
   if(searchWord == ""){
     alert("Please enter a search term");
     return
   }
+  if (!(searchHistory.includes(searchWord))){
+    searchHistory.push(searchWord)
+  }
+  localStorage.setItem("search", JSON.stringify(searchHistory));
   while (pokegrid.firstChild) {
     pokegrid.removeChild(pokegrid.firstChild);
   }
@@ -186,10 +221,46 @@ function search(){
     if (searchWord == nameToCheck){
       const searchResault = makepokemon(i);
       pokegrid.appendChild(searchResault);
+      renderSearchHistory();
       return
     }
   }
   counter = 0;
   makeGrid();
+  renderSearchHistory();
   alert("pokemon not found enter a valid pokemon");
+}
+function renderSearchHistory() {
+  const searches = JSON.parse(localStorage.getItem("search"))||[];
+  searchesDiv.style.display = "flex"
+  while (searchesDiv.lastChild.className == "search-line actual-search") {
+    searchesDiv.removeChild(searchesDiv.lastChild)
+  }
+  for (let i = 0; i < searches.length; i++) {
+    const searchLine = document.createElement("div");
+    const searchText = document.createElement("div");
+    const searchRemove = document.createElement("img");
+    searchLine.className = "search-line actual-search";
+    searchText.innerText = searches[i];
+    searchRemove.src = "/assets/searchdelete.svg";
+    searchRemove.id = Date.now();
+    searchRemove.className = "remove-search"
+    searchText.className = "past-search"
+    searchLine.appendChild(searchText);
+    searchLine.appendChild(searchRemove);
+    searchesDiv.appendChild(searchLine);
+  }
+}
+function removeSearch(search) {
+  const searches = JSON.parse(localStorage.getItem("search"))||[];
+  searches.splice(searches.indexOf(search.innerHTML),1);
+  localStorage.setItem("search", JSON.stringify(searches));
+  while (search.firstChild) {
+    search.removeChild(search.firstChild);
+  }
+}
+function clearSearchHistory() {
+  console.log("hey");
+  localStorage.removeItem("search");
+  renderSearchHistory();
 }

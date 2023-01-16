@@ -19,8 +19,8 @@
         <div class="navdiv">
           <img src="./assets/image 4.png" class="logo" />
           <div class="links">
-            <a href="/index.html" class="home-button">Home</a>
-            <a href="/favorites.html" class="favorites-webpage">Favorites</a>
+            <a href="/index.html" class="home-button green">Home</a>
+            <a href="/favorites.html" class="favorites-webpage blue">Favorites</a>
             <div class="empty-box"></div>
           </div>
           <img src="./assets/mobile-menu.svg" alt="" class="menu-button">
@@ -28,9 +28,15 @@
       </nav>
       <div class="searchform">
         <form class="search" id="search-form">
-          <input type="search" class="searchbox" id="search-input"/>
+          <input type="search" class="searchbox" id="search-input" autocomplete="off"/>
           <button type="submit" class="search-button" id="search-button">search</button>
         </form>
+        <div id="searches">
+          <div class="search-line">
+            <div class="recent-searches">RECENT SEARCH</div>
+            <div id="clear">CLEAR</div>
+          </div>
+        </div>
       </div>
       <div id="pokegrid"></div>
       <div class="load-more">
